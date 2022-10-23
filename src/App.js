@@ -1,10 +1,13 @@
 import "./App.css";
+import DataProvider from "./Components/context/DataProvider";
 import Home from "./Components/Home";
 
 function App() {
   return (
     <>
-      <Home />
+      <DataProvider>
+        <Home />
+      </DataProvider>
     </>
   );
 }
