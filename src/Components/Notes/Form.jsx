@@ -25,7 +25,7 @@ const Form = () => {
   const [showTextField, setShowTextField] = useState(false);
   const [adddNote, setAddNote] = useState({ ...note, id: uuid() });
 
-  const { notes, setNotes } = useContext(DataContext);
+  const { setNotes } = useContext(DataContext);
   const containerRef = useRef();
 
   const onTextAreaClick = () => {
@@ -35,8 +35,10 @@ const Form = () => {
   const handleClickAway = () => {
     setShowTextField(false);
     containerRef.current.style.minHeight = "30px";
-
-    setNotes((prevArr) => [adddNote, ...prevArr]);
+    setAddNote({ ...note, id: uuid() });
+    if (adddNote.heading || adddNote.text) {
+      setNotes((prevArr) => [adddNote, ...prevArr]);
+    }
   };
 
   const onTextChange = (e) => {
@@ -56,6 +58,7 @@ const Form = () => {
               style={{ marginBottom: 10 }}
               onChange={(e) => onTextChange(e)}
               name="heading"
+              value={adddNote.heading}
             />
           )}
           <TextField
@@ -67,6 +70,7 @@ const Form = () => {
             onClick={onTextAreaClick}
             onChange={(e) => onTextChange(e)}
             name="text"
+            value={adddNote.text}
           />
         </Container>
       </ClickAwayListener>

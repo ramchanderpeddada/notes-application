@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import Headerbar from "./Headerbar";
@@ -50,8 +50,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const SwipeDrawer = () => {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawer = () => {
     setOpen((prevState) => !prevState);
