@@ -4,7 +4,7 @@ export const DataContext = createContext(null);
 const DataProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [editNotes, setEditedNote] = useState([]);
-  const [deletedNotes, setDeletedNotes] = useState([]);
+  const [trashNotes, setTrashNotes] = useState([]);
   return (
     <>
       <DataContext.Provider
@@ -13,8 +13,8 @@ const DataProvider = ({ children }) => {
           setNotes,
           editNotes,
           setEditedNote,
-          deletedNotes,
-          setDeletedNotes,
+          trashNotes,
+          setTrashNotes,
         }}
       >
         {children}

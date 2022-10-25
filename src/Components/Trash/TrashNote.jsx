@@ -22,17 +22,18 @@ const CardStyled = styled(Card)`
   border-radius: 8px;
 `;
 const TrashNote = ({ note }) => {
-  const { notes, setNotes, deletedNotes, setDeletedNotes } =
+  const { notes, setNotes, trashNotes, setTrashNotes } =
     useContext(DataContext);
 
   const deleteNote = (note) => {
     const updatedNotes = notes.filter((data) => data.id !== note.id);
-    setDeletedNotes(updatedNotes);
+    setTrashNotes(updatedNotes);
   };
   const restoreNote = (note) => {
-    const updatedNotes = deletedNotes.filter((data) => data.id !== note.id);
-    setNotes(updatedNotes);
-    setDeletedNotes((prevArr) => [note, ...prevArr]);
+    const updatedNotes = trashNotes.filter((data) => data.id !== note.id);
+    console.log(updatedNotes);
+    setTrashNotes(updatedNotes);
+    setNotes((prevArr) => [note, ...prevArr]);
   };
 
   return (
@@ -45,11 +46,11 @@ const TrashNote = ({ note }) => {
         <DeleteForeverOutlined
           fontSize="small"
           onClick={() => deleteNote(note)}
+          style={{ marginLeft: "auto" }}
         />
         <RestoreFromTrashOutlined
           fontSize="small"
           onClick={() => restoreNote(note)}
-          style={{ marginLeft: "auto" }}
         />
       </CardActions>
     </CardStyled>

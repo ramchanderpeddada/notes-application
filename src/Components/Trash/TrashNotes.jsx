@@ -9,15 +9,15 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const TrashNotes = () => {
-  const { deletedNotes } = useContext(DataContext);
+  const { trashNotes } = useContext(DataContext);
   return (
     <>
       <Box sx={{ display: "flex", width: "100%" }}>
         <Box sx={{ width: "100%", p: 3 }}>
           <DrawerHeader />
-          {deletedNotes.length > 0 ? (
+          {trashNotes.length > 0 ? (
             <Grid container style={{ marginTop: 16 }}>
-              {deletedNotes.map((note) => (
+              {trashNotes.map((note) => (
                 <Grid item>
                   <TrashNote note={note} />
                 </Grid>
