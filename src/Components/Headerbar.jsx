@@ -1,7 +1,15 @@
 import { Menu } from "@mui/icons-material";
-import { AppBar, IconButton, styled, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  ButtonGroup,
+  IconButton,
+  styled,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 import * as React from "react";
-import Demo from "./Demo";
 
 const Header = styled(AppBar)`
   z-index: 1201;
@@ -20,19 +28,21 @@ const Headerbar = ({ open, handleDrawer }) => {
     "https://seeklogo.com/images/G/google-keep-logo-0BC92EBBBD-seeklogo.com.png";
   return (
     <>
-      <Header open={open}>
-        <Toolbar>
-          <IconButton
-            onClick={() => handleDrawer()}
-            edge="start"
-            sx={{ marginRight: "20px" }}
-          >
-            <Menu />
-          </IconButton>
-          <img src={logo} alt="logo" style={{ width: "25px" }} />
-          <Heading>Keep</Heading>
-        </Toolbar>
-      </Header>
+      <Box sx={{ flexGrow: 1 }}>
+        <Header open={open}>
+          <Toolbar>
+            <IconButton
+              onClick={() => handleDrawer()}
+              edge="start"
+              sx={{ marginRight: "20px" }}
+            >
+              <Menu />
+            </IconButton>
+            <img src={logo} alt="logo" style={{ width: "25px" }} />
+            <Heading>Keep</Heading>
+          </Toolbar>
+        </Header>
+      </Box>
     </>
   );
 };

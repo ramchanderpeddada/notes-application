@@ -3,17 +3,17 @@ import React, { createContext, useState } from "react";
 export const DataContext = createContext(null);
 const DataProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
-  const [archiveNotes, setArchiveNotes] = useState([]);
-  const [deletedNote, setDeletedNotes] = useState([]);
+  const [editNotes, setEditedNote] = useState([]);
+  const [deletedNotes, setDeletedNotes] = useState([]);
   return (
     <>
       <DataContext.Provider
         value={{
           notes,
           setNotes,
-          archiveNotes,
-          setArchiveNotes,
-          deletedNote,
+          editNotes,
+          setEditedNote,
+          deletedNotes,
           setDeletedNotes,
         }}
       >

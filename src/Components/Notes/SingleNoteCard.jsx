@@ -17,12 +17,19 @@ const CardStyled = styled(Card)`
   border-radius: 8px;
 `;
 const Note = ({ note }) => {
-  const { notes, setNotes, setDeletedNotes } = useContext(DataContext);
+  const { notes, setNotes, setEditedNote, setDeletedNotes } =
+    useContext(DataContext);
 
   const deleteNote = (note) => {
     const updatedNotes = notes.filter((data) => data.id !== note.id);
     setNotes(updatedNotes);
+    console.log(updatedNotes);
     setDeletedNotes((prevArr) => [note, ...prevArr]);
+  };
+  const editNote = (note) => {
+    const updateNote = notes.filter((data) => data.id == note.id);
+    console.log(updateNote);
+    setEditedNote((prevArr) => [note, ...prevArr]);
   };
 
   return (
@@ -35,7 +42,7 @@ const Note = ({ note }) => {
         <EditOutlined
           fontSize="small"
           style={{ marginLeft: "auto" }}
-          onClick={() => <EditNotes />}
+          onClick={() => editNote(note)}
         />
         <DeleteOutline fontSize="small" onClick={() => deleteNote(note)} />
       </CardActions>
