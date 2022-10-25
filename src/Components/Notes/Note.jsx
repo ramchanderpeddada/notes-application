@@ -1,8 +1,4 @@
-import {
-  ArchiveOutlined,
-  DeleteOutline,
-  EditOutlined,
-} from "@mui/icons-material";
+import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import {
   Card,
   CardActions,
@@ -11,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
+import EditNotes from "../../Edit/EditNotes";
 import { DataContext } from "../context/DataProvider";
 const CardStyled = styled(Card)`
   width: 240px;
@@ -20,15 +17,8 @@ const CardStyled = styled(Card)`
   border-radius: 8px;
 `;
 const Note = ({ note }) => {
-  const { notes, setNotes, setArchiveNotes, setDeletedNotes } =
-    useContext(DataContext);
+  const { notes, setNotes, setDeletedNotes } = useContext(DataContext);
 
-  const editNote = () => {};
-  const archiveNote = (note) => {
-    const updatedNotes = notes.filter((data) => data.id !== note.id);
-    setNotes(updatedNotes);
-    setArchiveNotes((prevArr) => [note, ...prevArr]);
-  };
   const deleteNote = (note) => {
     const updatedNotes = notes.filter((data) => data.id !== note.id);
     setNotes(updatedNotes);
@@ -45,9 +35,8 @@ const Note = ({ note }) => {
         <EditOutlined
           fontSize="small"
           style={{ marginLeft: "auto" }}
-          onClick={() => editNote()}
+          onClick={() => <EditNotes />}
         />
-        <ArchiveOutlined fontSize="small" onClick={() => archiveNote(note)} />
         <DeleteOutline fontSize="small" onClick={() => deleteNote(note)} />
       </CardActions>
     </CardStyled>

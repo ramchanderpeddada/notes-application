@@ -49,7 +49,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const SwipeDrawer = () => {
+const SwipeBar = () => {
   const [open, setOpen] = React.useState(true);
 
   const handleDrawer = () => {
@@ -66,4 +66,4 @@ const SwipeDrawer = () => {
     </Box>
   );
 };
-export default SwipeDrawer;
+export default SwipeBar;

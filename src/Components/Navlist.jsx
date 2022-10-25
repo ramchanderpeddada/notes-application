@@ -1,7 +1,6 @@
 import {
   DeleteOutlineOutlined as Delete,
   LightbulbOutlined as LightBulb,
-  ArchiveOutlined as Archive,
 } from "@mui/icons-material";
 import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
@@ -15,12 +14,7 @@ const Navlist = () => {
     },
     {
       id: 2,
-      name: "Archive",
-      icon: <Archive />,
-    },
-    {
-      id: 3,
-      name: "Bin",
+      name: "Trash",
       icon: <Delete />,
     },
   ];
