@@ -2,7 +2,7 @@ import { Box, Grid, styled } from "@mui/material";
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataProvider";
 import EmptyNotes from "./EmptyNotes";
-import Form from "./Form";
+import MainForm from "./MainForm";
 import Note from "./SingleNoteCard";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -16,7 +16,7 @@ const Notes = () => {
       <Box sx={{ display: "flex", width: "100%" }}>
         <Box sx={{ width: "100%", p: 3 }}>
           <DrawerHeader />
-          <Form />
+          <MainForm />
           {notes.length > 0 ? (
             <Grid container style={{ marginTop: 16 }}>
               {notes.map((note) => (
@@ -26,7 +26,7 @@ const Notes = () => {
               ))}
             </Grid>
           ) : (
-            <EmptyNotes />
+            <EmptyNotes name="Notes" />
           )}
         </Box>
       </Box>

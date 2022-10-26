@@ -7,7 +7,7 @@ import TrashNotes from "./Trash/TrashNotes";
 function Home() {
   return (
     <>
-      <Box style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <Box style={{ width: "100%", display: "flex" }}>
         <Router>
           <SwipeBar />
           <Routes>

@@ -24,7 +24,7 @@ const TrashNotes = () => {
               ))}
             </Grid>
           ) : (
-            <EmptyNotes />
+            <EmptyNotes name="Trash" />
           )}
         </Box>
       </Box>

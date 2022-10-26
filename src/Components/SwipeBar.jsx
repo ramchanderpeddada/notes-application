@@ -5,7 +5,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import Headerbar from "./Headerbar";
 import Navlist from "./Navlist";
 
-const drawerWidth = 250;
+const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -60,7 +60,7 @@ const SwipeBar = () => {
     <Box sx={{ display: "flex" }}>
       <Headerbar open={open} handleDrawer={handleDrawer} />
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>Helo</DrawerHeader>
+        <DrawerHeader />
         <Navlist />
       </Drawer>
     </Box>

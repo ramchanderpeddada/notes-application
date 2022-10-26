@@ -2,13 +2,12 @@ import { Box, ClickAwayListener, styled, TextField } from "@mui/material";
 import React, { useContext, useRef, useState } from "react";
 import { DataContext } from "../context/DataProvider";
 import { v4 as uuid } from "uuid";
-
 const Container = styled(Box)`
   display: flex;
   flex-direction: column;
   width: 600px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px rgb(60 64 67/ 15%);
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-radius: 8px;
   border-color: #e0e0e0;
   margin: auto;
@@ -21,28 +20,28 @@ const note = {
   text: "",
 };
 
-const Form = () => {
+const MainForm = () => {
   const [showTextField, setShowTextField] = useState(false);
-  const [adddNote, setAddNote] = useState({ ...note, id: uuid() });
+  const [addNote, setAddNote] = useState({ ...note, id: uuid() });
 
   const { setNotes } = useContext(DataContext);
   const containerRef = useRef();
 
   const onTextAreaClick = () => {
     setShowTextField(true);
-    containerRef.current.style.minHeight = "70px";
+    containerRef.current.style.minHeight = "50px";
   };
   const handleClickAway = () => {
     setShowTextField(false);
-    containerRef.current.style.minHeight = "30px";
+    containerRef.current.style.minHeight = "20px";
     setAddNote({ ...note, id: uuid() });
-    if (adddNote.heading || adddNote.text) {
-      setNotes((prevArr) => [adddNote, ...prevArr]);
+    if (addNote.heading || addNote.text) {
+      setNotes((prevArr) => [addNote, ...prevArr]);
     }
   };
 
   const onTextChange = (e) => {
-    let changedNote = { ...adddNote, [e.target.name]: e.target.value };
+    let changedNote = { ...addNote, [e.target.name]: e.target.value };
     setAddNote(changedNote);
   };
 
@@ -58,7 +57,7 @@ const Form = () => {
               style={{ marginBottom: 10 }}
               onChange={(e) => onTextChange(e)}
               name="heading"
-              value={adddNote.heading}
+              value={addNote.heading}
             />
           )}
           <TextField
@@ -70,7 +69,7 @@ const Form = () => {
             onClick={onTextAreaClick}
             onChange={(e) => onTextChange(e)}
             name="text"
-            value={adddNote.text}
+            value={addNote.text}
           />
         </Container>
       </ClickAwayListener>
@@ -78,4 +77,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default MainForm;

@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react";
 
 export const DataContext = createContext(null);
+
 const DataProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
-  const [editNotes, setEditedNote] = useState([]);
   const [trashNotes, setTrashNotes] = useState([]);
   return (
     <>
@@ -11,8 +11,6 @@ const DataProvider = ({ children }) => {
         value={{
           notes,
           setNotes,
-          editNotes,
-          setEditedNote,
           trashNotes,
           setTrashNotes,
         }}

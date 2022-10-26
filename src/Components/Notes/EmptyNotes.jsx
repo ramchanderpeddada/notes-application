@@ -18,12 +18,12 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 25vh;
 `;
-const EmptyNotes = () => {
+const EmptyNotes = ({ name }) => {
   return (
     <>
       <Container>
         <Light />
-        <Text>No Notes Found!</Text>
+        <Text>No {name} Found!</Text>
       </Container>
     </>
   );
