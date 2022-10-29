@@ -6,15 +6,17 @@ import {
   Card,
   CardActions,
   CardContent,
+  IconButton,
   styled,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataProvider";
 const CardStyled = styled(Card)`
   width: 240px;
   margin: 8px;
-  box-shadow: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   margin-top: 3rem;
@@ -25,12 +27,18 @@ const TrashNote = ({ note }) => {
   const deleteNote = (note) => {
     const updatedNotes = trashNotes.filter((data) => data.id !== note.id);
     setTrashNotes(updatedNotes);
+    axios
+      .delete(`http://localhost:3006/notes/${note.id}`, {
+        title: note.heading,
+        text: note.text,
+      })
+      .then((res) => setNotes(res.data))
+      .catch((error) => console.error(error));
   };
   const restoreNote = (note) => {
     const updatedNotes = trashNotes.filter((data) => data.id !== note.id);
     setTrashNotes(updatedNotes);
     setNotes((prevArr) => [note, ...prevArr]);
-    alert("succesfully Restored");
   };
 
   return (
@@ -41,15 +49,15 @@ const TrashNote = ({ note }) => {
           <Typography>{note.text}</Typography>
         </CardContent>
         <CardActions>
-          <DeleteForeverOutlined
-            fontSize="small"
-            onClick={() => deleteNote(note)}
-            style={{ marginLeft: "auto" }}
-          />
-          <RestoreFromTrashOutlined
-            fontSize="small"
-            onClick={() => restoreNote(note)}
-          />
+          <IconButton onClick={() => deleteNote(note)}>
+            <DeleteForeverOutlined
+              fontSize="small"
+              style={{ marginLeft: "auto" }}
+            />
+          </IconButton>
+          <IconButton onClick={() => restoreNote(note)}>
+            <RestoreFromTrashOutlined fontSize="small" />
+          </IconButton>
         </CardActions>
       </CardStyled>
     </>
